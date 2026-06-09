@@ -1,0 +1,263 @@
+[
+  {
+    "id": "ta-001",
+    "name": "E-commerce Starter Kit",
+    "category": "Full Application",
+    "description": "Production-ready e-commerce platform with product catalog, cart, checkout, and payment integration",
+    "technologies": ["React", "Node.js", "PostgreSQL", "Stripe", "Redis"],
+    "features": [
+      "Product catalog with search and filters",
+      "Shopping cart and wishlist",
+      "Secure checkout flow",
+      "Payment gateway integration (Stripe, PayPal)",
+      "Order management system",
+      "Admin dashboard",
+      "Email notifications",
+      "Inventory management"
+    ],
+    "time_saved": "4-6 weeks",
+    "cost_reduction": "30-40%",
+    "customization_level": "High",
+    "use_cases": ["Online retail", "B2C marketplace", "Digital goods store"]
+  },
+  {
+    "id": "ta-002",
+    "name": "Authentication & Authorization Module",
+    "category": "Component",
+    "description": "Secure authentication system with OAuth, social login, and role-based access control",
+    "technologies": ["JWT", "OAuth 2.0", "Passport.js", "bcrypt"],
+    "features": [
+      "Email/password authentication",
+      "Social login (Google, Facebook, LinkedIn)",
+      "Two-factor authentication (2FA)",
+      "Role-based access control (RBAC)",
+      "Password reset and recovery",
+      "Session management",
+      "API key management",
+      "Audit logs"
+    ],
+    "time_saved": "2-3 weeks",
+    "cost_reduction": "20-30%",
+    "customization_level": "Medium",
+    "use_cases": ["Any application requiring user authentication"]
+  },
+  {
+    "id": "ta-003",
+    "name": "Real-time Notification System",
+    "category": "Service",
+    "description": "Multi-channel notification system with WebSocket, push notifications, and email",
+    "technologies": ["Socket.io", "Firebase Cloud Messaging", "SendGrid", "Redis"],
+    "features": [
+      "Real-time WebSocket connections",
+      "Push notifications (web, mobile)",
+      "Email notifications with templates",
+      "SMS notifications",
+      "Notification preferences management",
+      "Delivery tracking and analytics",
+      "Rate limiting",
+      "Template engine"
+    ],
+    "time_saved": "3-4 weeks",
+    "cost_reduction": "25-35%",
+    "customization_level": "Medium",
+    "use_cases": ["Chat apps", "Social platforms", "Transaction alerts", "System monitoring"]
+  },
+  {
+    "id": "ta-004",
+    "name": "API Gateway & Microservices Framework",
+    "category": "Infrastructure",
+    "description": "Production-ready API gateway with service discovery, load balancing, and monitoring",
+    "technologies": ["Express Gateway", "Kong", "Consul", "Prometheus", "Grafana"],
+    "features": [
+      "API routing and orchestration",
+      "Service discovery",
+      "Load balancing",
+      "Rate limiting and throttling",
+      "API versioning",
+      "Request/response transformation",
+      "Authentication and authorization",
+      "Monitoring and analytics",
+      "Circuit breaker pattern"
+    ],
+    "time_saved": "4-5 weeks",
+    "cost_reduction": "30-40%",
+    "customization_level": "High",
+    "use_cases": ["Microservices architecture", "API management", "Service mesh"]
+  },
+  {
+    "id": "ta-005",
+    "name": "Admin Dashboard Template",
+    "category": "UI Component",
+    "description": "Feature-rich admin dashboard with charts, tables, and CRUD operations",
+    "technologies": ["React", "Angular", "Material UI", "Chart.js", "AG Grid"],
+    "features": [
+      "Responsive layout",
+      "Dark/light theme",
+      "Data tables with sorting and filtering",
+      "Interactive charts and graphs",
+      "Form builders",
+      "User management interface",
+      "Settings and configuration pages",
+      "Analytics dashboard",
+      "Export functionality (CSV, PDF)"
+    ],
+    "time_saved": "3-4 weeks",
+    "cost_reduction": "25-30%",
+    "customization_level": "High",
+    "use_cases": ["Admin panels", "Analytics dashboards", "CMS interfaces"]
+  },
+  {
+    "id": "ta-006",
+    "name": "Payment Processing Integration",
+    "category": "Service",
+    "description": "Multi-provider payment gateway integration with fraud detection",
+    "technologies": ["Stripe", "PayPal", "Razorpay", "PCI DSS compliance"],
+    "features": [
+      "Multiple payment methods (cards, wallets, UPI)",
+      "Subscription and recurring billing",
+      "Refund management",
+      "Invoice generation",
+      "Payment analytics",
+      "Fraud detection",
+      "3D Secure authentication",
+      "Multi-currency support",
+      "Webhook handling"
+    ],
+    "time_saved": "3-4 weeks",
+    "cost_reduction": "30-35%",
+    "customization_level": "Medium",
+    "use_cases": ["E-commerce", "SaaS billing", "Marketplace payments"]
+  },
+  {
+    "id": "ta-007",
+    "name": "Mobile App Starter (React Native)",
+    "category": "Full Application",
+    "description": "Cross-platform mobile app template with navigation, state management, and API integration",
+    "technologies": ["React Native", "Redux", "React Navigation", "AsyncStorage"],
+    "features": [
+      "Cross-platform (iOS/Android)",
+      "Navigation system",
+      "State management",
+      "API client",
+      "Offline support",
+      "Push notifications",
+      "App analytics",
+      "Crash reporting",
+      "In-app updates"
+    ],
+    "time_saved": "3-5 weeks",
+    "cost_reduction": "30-40%",
+    "customization_level": "High",
+    "use_cases": ["Mobile-first apps", "Companion apps", "Cross-platform solutions"]
+  },
+  {
+    "id": "ta-008",
+    "name": "CI/CD Pipeline Template",
+    "category": "DevOps",
+    "description": "Automated deployment pipeline with testing, building, and deployment stages",
+    "technologies": ["GitHub Actions", "GitLab CI", "Docker", "Kubernetes", "Terraform"],
+    "features": [
+      "Automated testing (unit, integration, e2e)",
+      "Code quality checks",
+      "Security scanning",
+      "Automated builds",
+      "Multi-environment deployments",
+      "Rollback capabilities",
+      "Infrastructure as code",
+      "Monitoring integration",
+      "Slack/email notifications"
+    ],
+    "time_saved": "2-3 weeks",
+    "cost_reduction": "20-25%",
+    "customization_level": "Medium",
+    "use_cases": ["Any application requiring automated deployment"]
+  },
+  {
+    "id": "ta-009",
+    "name": "Search & Filter System",
+    "category": "Component",
+    "description": "Advanced search with full-text search, faceted filters, and autocomplete",
+    "technologies": ["Elasticsearch", "Algolia", "Redis", "React"],
+    "features": [
+      "Full-text search",
+      "Faceted filtering",
+      "Autocomplete and suggestions",
+      "Search analytics",
+      "Typo tolerance",
+      "Relevance tuning",
+      "Multi-language support",
+      "Geo-search",
+      "Search-as-you-type"
+    ],
+    "time_saved": "3-4 weeks",
+    "cost_reduction": "25-30%",
+    "customization_level": "Medium",
+    "use_cases": ["E-commerce", "Content platforms", "Directory services"]
+  },
+  {
+    "id": "ta-010",
+    "name": "RAG System Framework",
+    "category": "AI/ML",
+    "description": "Retrieval-Augmented Generation system with vector database and LLM integration",
+    "technologies": ["LangChain", "Pinecone", "OpenAI", "Claude", "FAISS"],
+    "features": [
+      "Document ingestion and processing",
+      "Vector embeddings generation",
+      "Semantic search",
+      "Context retrieval",
+      "LLM integration (OpenAI, Claude, etc.)",
+      "Response generation",
+      "Citation tracking",
+      "Evaluation metrics",
+      "Fine-tuning support"
+    ],
+    "time_saved": "4-6 weeks",
+    "cost_reduction": "35-45%",
+    "customization_level": "High",
+    "use_cases": ["Chatbots", "Knowledge bases", "Document Q&A", "Content generation"]
+  },
+  {
+    "id": "ta-011",
+    "name": "Data Analytics Dashboard",
+    "category": "Full Application",
+    "description": "Business intelligence dashboard with data visualization and reporting",
+    "technologies": ["D3.js", "Chart.js", "Apache Superset", "Python", "PostgreSQL"],
+    "features": [
+      "Interactive data visualizations",
+      "Custom report builder",
+      "Scheduled reports",
+      "Real-time data updates",
+      "Drill-down capabilities",
+      "Export functionality",
+      "User permissions",
+      "Custom metrics and KPIs",
+      "Alert system"
+    ],
+    "time_saved": "5-6 weeks",
+    "cost_reduction": "30-40%",
+    "customization_level": "High",
+    "use_cases": ["Business analytics", "Performance monitoring", "Data visualization"]
+  },
+  {
+    "id": "ta-012",
+    "name": "Document Management System",
+    "category": "Service",
+    "description": "Complete document lifecycle management with versioning and collaboration",
+    "technologies": ["S3", "MongoDB", "Elasticsearch", "WebDAV"],
+    "features": [
+      "Document upload and storage",
+      "Version control",
+      "Access control and permissions",
+      "Full-text search",
+      "Document preview",
+      "Collaborative editing",
+      "Metadata management",
+      "Audit trail",
+      "Retention policies"
+    ],
+    "time_saved": "4-5 weeks",
+    "cost_reduction": "30-35%",
+    "customization_level": "Medium",
+    "use_cases": ["Enterprise document management", "Compliance systems", "Collaboration tools"]
+  }
+]

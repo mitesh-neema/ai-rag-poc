@@ -1,0 +1,153 @@
+[
+  {
+    "id": "cs-001",
+    "title": "E-commerce Platform Modernization - RetailCo",
+    "client": "RetailCo",
+    "industry": "Retail",
+    "technologies": ["React", "Node.js", "AWS", "PostgreSQL", "Redis"],
+    "duration": "6 months",
+    "team_size": "8 developers",
+    "budget": "$480,000",
+    "summary": "Modernized legacy e-commerce platform resulting in 45% performance improvement and 30% increase in conversion rates.",
+    "challenges": [
+      "Legacy monolithic architecture causing scalability issues",
+      "Slow page load times affecting user experience",
+      "Limited mobile responsiveness"
+    ],
+    "solutions": [
+      "Migrated to microservices architecture using Node.js and AWS ECS",
+      "Implemented React-based frontend with server-side rendering",
+      "Deployed CDN and Redis caching for performance optimization",
+      "Built responsive mobile-first design"
+    ],
+    "results": {
+      "performance_improvement": "45%",
+      "conversion_increase": "30%",
+      "page_load_reduction": "60%",
+      "mobile_traffic_increase": "50%"
+    },
+    "tags": ["e-commerce", "modernization", "react", "aws", "microservices"]
+  },
+  {
+    "id": "cs-002",
+    "title": "Mobile Banking App - FinanceFirst",
+    "client": "FinanceFirst Bank",
+    "industry": "Fintech",
+    "technologies": ["React Native", "Node.js", "Azure", "MongoDB", "Socket.io"],
+    "duration": "8 months",
+    "team_size": "10 developers",
+    "budget": "$640,000",
+    "summary": "Developed secure mobile banking application with real-time transaction notifications and biometric authentication.",
+    "challenges": [
+      "Stringent security and compliance requirements",
+      "Real-time transaction processing needs",
+      "Cross-platform compatibility requirements"
+    ],
+    "solutions": [
+      "Implemented end-to-end encryption and biometric authentication",
+      "Built real-time notification system using Socket.io and Azure Service Bus",
+      "Developed cross-platform app using React Native",
+      "Integrated with existing banking core systems via secure APIs"
+    ],
+    "results": {
+      "user_adoption": "85% within 3 months",
+      "transaction_volume": "1M+ monthly transactions",
+      "security_rating": "A+ compliance",
+      "app_rating": "4.8/5 stars"
+    },
+    "tags": ["mobile", "fintech", "real-time", "react-native", "security"]
+  },
+  {
+    "id": "cs-003",
+    "title": "Healthcare Management System - MediCare",
+    "client": "MediCare Health Network",
+    "industry": "Healthcare",
+    "technologies": ["Angular", "Python", "GCP", "PostgreSQL", "Kubernetes"],
+    "duration": "10 months",
+    "team_size": "12 developers",
+    "budget": "$800,000",
+    "summary": "Built comprehensive healthcare management system with patient portal, appointment scheduling, and EHR integration.",
+    "challenges": [
+      "HIPAA compliance requirements",
+      "Integration with multiple EHR systems",
+      "Complex appointment scheduling logic",
+      "Patient data security"
+    ],
+    "solutions": [
+      "Developed Angular-based patient portal with intuitive UX",
+      "Implemented Python microservices for backend logic",
+      "Built HIPAA-compliant infrastructure on GCP",
+      "Created unified API layer for EHR integration",
+      "Deployed on Kubernetes for scalability"
+    ],
+    "results": {
+      "patient_satisfaction": "92%",
+      "appointment_efficiency": "40% improvement",
+      "no_show_reduction": "25%",
+      "staff_time_saved": "15 hours/week"
+    },
+    "tags": ["healthcare", "angular", "compliance", "gcp", "kubernetes"]
+  },
+  {
+    "id": "cs-004",
+    "title": "IoT Dashboard - SmartFactory",
+    "client": "Manufacturing Solutions Inc",
+    "industry": "Manufacturing",
+    "technologies": ["Vue.js", "Node.js", "AWS IoT", "TimescaleDB", "Grafana"],
+    "duration": "5 months",
+    "team_size": "6 developers",
+    "budget": "$320,000",
+    "summary": "Developed real-time IoT monitoring dashboard for smart factory operations with predictive maintenance capabilities.",
+    "challenges": [
+      "High-frequency sensor data ingestion",
+      "Real-time visualization requirements",
+      "Predictive analytics integration",
+      "Legacy equipment connectivity"
+    ],
+    "solutions": [
+      "Built scalable data pipeline using AWS IoT Core and Lambda",
+      "Implemented Vue.js dashboard with real-time WebSocket updates",
+      "Integrated TimescaleDB for time-series data storage",
+      "Developed ML-based predictive maintenance models",
+      "Created custom adapters for legacy equipment"
+    ],
+    "results": {
+      "downtime_reduction": "35%",
+      "maintenance_cost_savings": "$500K annually",
+      "data_processing_rate": "10K events/second",
+      "roi": "Achieved in 8 months"
+    },
+    "tags": ["iot", "real-time", "manufacturing", "vue", "aws-iot"]
+  },
+  {
+    "id": "cs-005",
+    "title": "AI-Powered Customer Service - SupportHub",
+    "client": "TechSupport Pro",
+    "industry": "SaaS",
+    "technologies": ["React", "Python", "FastAPI", "AWS", "OpenAI", "Pinecone"],
+    "duration": "7 months",
+    "team_size": "9 developers",
+    "budget": "$560,000",
+    "summary": "Built AI-powered customer support platform with RAG-based knowledge retrieval and automated ticket resolution.",
+    "challenges": [
+      "Large knowledge base with inconsistent documentation",
+      "Need for contextual understanding of customer queries",
+      "Integration with existing ticketing systems",
+      "Multilingual support requirements"
+    ],
+    "solutions": [
+      "Implemented RAG system using Pinecone vector database",
+      "Built React-based agent interface with AI suggestions",
+      "Developed FastAPI backend with OpenAI integration",
+      "Created automated ticket classification and routing",
+      "Added multilingual support for 12 languages"
+    ],
+    "results": {
+      "ticket_resolution_time": "50% reduction",
+      "first_contact_resolution": "65% improvement",
+      "agent_productivity": "3x increase",
+      "customer_satisfaction": "88% CSAT score"
+    },
+    "tags": ["ai", "customer-service", "rag", "react", "python"]
+  }
+]

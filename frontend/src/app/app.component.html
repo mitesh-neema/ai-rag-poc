@@ -1,0 +1,152 @@
+<div class="app-container">
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <h1 class="header-title">🤖 RAG Proposal Generator</h1>
+        <p class="header-subtitle">AI-Powered Proposal Creation with Context-Aware Intelligence</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content container">
+    <div class="chat-container card">
+      <!-- Welcome Screen (shown when no messages) -->
+      @if (messages().length === 0) {
+        <div class="welcome-screen">
+          <div class="welcome-icon">📝</div>
+          <h2>Welcome to RAG Proposal Generator</h2>
+          <p class="welcome-text">
+            Generate comprehensive, data-driven proposals using AI with Retrieval-Augmented Generation (RAG).
+            Our system retrieves relevant case studies, rate cards, and tech accelerators to create tailored proposals.
+          </p>
+
+          <div class="example-prompts">
+            <h3>Try these examples:</h3>
+            <div class="example-list">
+              @for (example of examplePrompts; track example) {
+                <button class="example-btn" (click)="useExample(example)">
+                  {{ example }}
+                </button>
+              }
+            </div>
+          </div>
+
+          <div class="features">
+            <div class="feature">
+              <span class="feature-icon">📚</span>
+              <span>RAG Context Retrieval</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">🤖</span>
+              <span>Claude AI Integration</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">📊</span>
+              <span>Slide Deck Format</span>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Chat Messages -->
+      @if (messages().length > 0) {
+        <div class="messages-container">
+          @for (message of messages(); track $index) {
+            <div class="message" [class.user-message]="message.role === 'user'" [class.assistant-message]="message.role === 'assistant'">
+              <div class="message-header">
+                <span class="message-role">{{ message.role === 'user' ? '👤 You' : '🤖 AI Assistant' }}</span>
+                <span class="message-time">{{ message.timestamp | date:'short' }}</span>
+              </div>
+              <div class="message-content">
+                @if (message.role === 'user') {
+                  <p>{{ message.content }}</p>
+                } @else {
+                  <div class="markdown-content" [innerHTML]="parseMarkdown(message.content)"></div>
+                }
+              </div>
+            </div>
+          }
+
+          <!-- Loading Indicator -->
+          @if (isLoading()) {
+            <div class="message assistant-message loading-message">
+              <div class="message-header">
+                <span class="message-role">🤖 AI Assistant</span>
+              </div>
+              <div class="message-content">
+                <div class="loading-indicator">
+                  <div class="spinner"></div>
+                  <span>Generating proposal...</span>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Context Info -->
+        @if (contextInfo()) {
+          <div class="context-info">
+            <span class="context-icon">📚</span>
+            {{ contextInfo() }}
+          </div>
+        }
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+          <button class="btn btn-secondary" (click)="clearChat()">
+            🗑️ Clear Chat
+          </button>
+          <button class="btn btn-secondary" (click)="downloadProposal()" [disabled]="!hasAssistantMessages">
+            📥 Download Proposal
+          </button>
+        </div>
+      }
+
+      <!-- Error Message -->
+      @if (error()) {
+        <div class="error-message">
+          <span class="error-icon">⚠️</span>
+          <span>{{ error() }}</span>
+        </div>
+      }
+    </div>
+
+    <!-- Input Area -->
+    <div class="input-container card">
+      <div class="input-wrapper">
+        <textarea
+          class="input-field"
+          [(ngModel)]="userInputValue"
+          placeholder="Describe your proposal requirements (e.g., 'Build an e-commerce platform with React and AWS')..."
+          rows="3"
+          (keydown.enter)="handleKeyDown($event)"
+          [disabled]="isLoading()"
+        ></textarea>
+        <button
+          class="btn btn-primary send-btn"
+          (click)="sendMessage()"
+          [disabled]="!userInput().trim() || isLoading()"
+        >
+          @if (isLoading()) {
+            <div class="spinner"></div>
+          } @else {
+            <span>Send</span>
+            <span>🚀</span>
+          }
+        </button>
+      </div>
+      <div class="input-hint">
+        Press <kbd>Enter</kbd> to send • <kbd>Shift + Enter</kbd> for new line
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>Powered by Claude AI • RAG Technology • MCP Protocol</p>
+    </div>
+  </footer>
+</div>

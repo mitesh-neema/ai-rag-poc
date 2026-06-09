@@ -1,0 +1,122 @@
+[
+  {
+    "id": "rc-001",
+    "role": "Senior Full-Stack Developer",
+    "rate_per_hour": 120,
+    "rate_per_day": 960,
+    "monthly_rate": 19200,
+    "skills": ["React", "Angular", "Vue.js", "Node.js", "Python", "AWS", "Azure"],
+    "experience_level": "5+ years",
+    "availability": "Onshore/Offshore"
+  },
+  {
+    "id": "rc-002",
+    "role": "Mid-Level Full-Stack Developer",
+    "rate_per_hour": 85,
+    "rate_per_day": 680,
+    "monthly_rate": 13600,
+    "skills": ["React", "Node.js", "MongoDB", "PostgreSQL", "REST APIs"],
+    "experience_level": "3-5 years",
+    "availability": "Onshore/Offshore"
+  },
+  {
+    "id": "rc-003",
+    "role": "Junior Developer",
+    "rate_per_hour": 50,
+    "rate_per_day": 400,
+    "monthly_rate": 8000,
+    "skills": ["HTML", "CSS", "JavaScript", "React", "Git"],
+    "experience_level": "1-3 years",
+    "availability": "Offshore"
+  },
+  {
+    "id": "rc-004",
+    "role": "Tech Lead / Architect",
+    "rate_per_hour": 150,
+    "rate_per_day": 1200,
+    "monthly_rate": 24000,
+    "skills": ["System Design", "Microservices", "Cloud Architecture", "DevOps", "Team Leadership"],
+    "experience_level": "8+ years",
+    "availability": "Onshore/Offshore"
+  },
+  {
+    "id": "rc-005",
+    "role": "UI/UX Designer",
+    "rate_per_hour": 95,
+    "rate_per_day": 760,
+    "monthly_rate": 15200,
+    "skills": ["Figma", "Adobe XD", "User Research", "Prototyping", "Design Systems"],
+    "experience_level": "4+ years",
+    "availability": "Onshore/Offshore"
+  },
+  {
+    "id": "rc-006",
+    "role": "DevOps Engineer",
+    "rate_per_hour": 110,
+    "rate_per_day": 880,
+    "monthly_rate": 17600,
+    "skills": ["AWS", "Azure", "Kubernetes", "Docker", "CI/CD", "Terraform"],
+    "experience_level": "5+ years",
+    "availability": "Onshore/Offshore"
+  },
+  {
+    "id": "rc-007",
+    "role": "QA Automation Engineer",
+    "rate_per_hour": 80,
+    "rate_per_day": 640,
+    "monthly_rate": 12800,
+    "skills": ["Selenium", "Cypress", "Jest", "Test Automation", "API Testing"],
+    "experience_level": "3+ years",
+    "availability": "Offshore"
+  },
+  {
+    "id": "rc-008",
+    "role": "Project Manager",
+    "rate_per_hour": 100,
+    "rate_per_day": 800,
+    "monthly_rate": 16000,
+    "skills": ["Agile", "Scrum", "Stakeholder Management", "Risk Management", "JIRA"],
+    "experience_level": "6+ years",
+    "availability": "Onshore/Offshore"
+  },
+  {
+    "id": "rc-009",
+    "role": "Mobile Developer (iOS/Android)",
+    "rate_per_hour": 105,
+    "rate_per_day": 840,
+    "monthly_rate": 16800,
+    "skills": ["React Native", "Swift", "Kotlin", "Flutter", "Mobile UI/UX"],
+    "experience_level": "4+ years",
+    "availability": "Onshore/Offshore"
+  },
+  {
+    "id": "rc-010",
+    "role": "Data Engineer",
+    "rate_per_hour": 115,
+    "rate_per_day": 920,
+    "monthly_rate": 18400,
+    "skills": ["Python", "Spark", "Airflow", "ETL", "Data Warehousing", "SQL"],
+    "experience_level": "5+ years",
+    "availability": "Onshore/Offshore"
+  },
+  {
+    "id": "rc-011",
+    "role": "ML/AI Engineer",
+    "rate_per_hour": 140,
+    "rate_per_day": 1120,
+    "monthly_rate": 22400,
+    "skills": ["Python", "TensorFlow", "PyTorch", "NLP", "Computer Vision", "MLOps"],
+    "experience_level": "5+ years",
+    "availability": "Onshore/Offshore"
+  },
+  {
+    "id": "rc-012",
+    "role": "Security Engineer",
+    "rate_per_hour": 130,
+    "rate_per_day": 1040,
+    "monthly_rate": 20800,
+    "skills": ["Security Audits", "Penetration Testing", "OWASP", "Compliance", "Encryption"],
+    "experience_level": "6+ years",
+    "availability": "Onshore"
+  }
+]
