@@ -6,6 +6,7 @@ dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import proposalRoutes from './routes/proposal.routes.js';
+import modernizationRoutes from './routes/modernization.routes.js';
 import { mcpClient } from './services/mcp-client.service.js';
 
 const app = express();
@@ -44,6 +45,7 @@ app.get('/health/mcp', async (req, res) => {
 
 // Routes
 app.use('/api/proposal', proposalRoutes);
+app.use('/api/modernization', modernizationRoutes);
 
 // 404 handler
 app.use((req, res) => {

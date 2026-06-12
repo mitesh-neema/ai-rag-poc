@@ -3,153 +3,187 @@
   <header class="header">
     <div class="container">
       <div class="header-content">
-        <h1 class="header-title">🤖 RAG Proposal Generator</h1>
-        <p class="header-subtitle">AI-Powered Proposal Creation with Context-Aware Intelligence</p>
+        <h1 class="header-title">🔄 Legacy Modernization Agent</h1>
+        <p class="header-subtitle">AI-Powered Polaris & Meridian Modernization Analysis</p>
       </div>
     </div>
   </header>
 
   <!-- Main Content -->
   <main class="main-content container">
-    <div class="chat-container card">
-      <!-- Welcome Screen (shown when no messages) -->
-      @if (messages().length === 0) {
-        <div class="welcome-screen">
-          <div class="welcome-icon">📝</div>
-          <h2>Welcome to RAG Proposal Generator</h2>
-          <p class="welcome-text">
-            Generate comprehensive, data-driven proposals using AI with Retrieval-Augmented Generation (RAG).
-            Our system retrieves relevant case studies, rate cards, and tech accelerators to create tailored proposals.
-          </p>
+    <!-- Welcome Screen with 4 Options -->
+    @if (showWelcomeScreen) {
+      <div class="welcome-screen">
+        <div class="welcome-icon">🏗️</div>
+        <h2>Polaris & Meridian Modernization</h2>
+        <p class="welcome-text">
+          AI-powered analysis of your legacy insurance policy management systems with comprehensive 
+          modernization strategies, technical recommendations, and detailed project plans powered by 
+          NotebookLM and Claude AI.
+        </p>
 
-          <div class="example-prompts">
-            <h3>Try these examples:</h3>
-            <div class="example-list">
-              @for (example of examplePrompts; track example) {
-                <button class="example-btn" (click)="useExample(example)">
-                  {{ example }}
-                </button>
-              }
-            </div>
+        <div class="options-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 40px 0;">
+          <button class="option-card" (click)="selectMode('roadmap')" 
+                  style="padding: 30px; border: 2px solid #1F4788; border-radius: 12px; background: white; cursor: pointer; transition: all 0.3s;">
+            <div class="option-icon" style="font-size: 48px; margin-bottom: 15px;">🗺️</div>
+            <h3 style="color: #1F4788; margin-bottom: 10px;">Modernization Roadmap</h3>
+            <p style="color: #666; font-size: 14px;">Unified system vision, gap analysis, trends & risk assessment</p>
+          </button>
+
+          <button class="option-card" (click)="selectMode('tech-solution')"
+                  style="padding: 30px; border: 2px solid #1F4788; border-radius: 12px; background: white; cursor: pointer; transition: all 0.3s;">
+            <div class="option-icon" style="font-size: 48px; margin-bottom: 15px;">⚙️</div>
+            <h3 style="color: #1F4788; margin-bottom: 10px;">Tech Solution</h3>
+            <p style="color: #666; font-size: 14px;">Recommended architecture, stack & accelerators</p>
+          </button>
+
+          <button class="option-card" (click)="selectMode('estimation')"
+                  style="padding: 30px; border: 2px solid #1F4788; border-radius: 12px; background: white; cursor: pointer; transition: all 0.3s;">
+            <div class="option-icon" style="font-size: 48px; margin-bottom: 15px;">📊</div>
+            <h3 style="color: #1F4788; margin-bottom: 10px;">Estimations & Timeline</h3>
+            <p style="color: #666; font-size: 14px;">Phased delivery plan with teams, costs & ROI</p>
+          </button>
+
+          <button class="option-card" (click)="selectMode('qa')"
+                  style="padding: 30px; border: 2px solid #1F4788; border-radius: 12px; background: white; cursor: pointer; transition: all 0.3s;">
+            <div class="option-icon" style="font-size: 48px; margin-bottom: 15px;">💬</div>
+            <h3 style="color: #1F4788; margin-bottom: 10px;">Ask Questions</h3>
+            <p style="color: #666; font-size: 14px;">Interactive Q&A about Polaris & Meridian systems</p>
+          </button>
+        </div>
+
+        <div class="features">
+          <div class="feature">
+            <span class="feature-icon">📚</span>
+            <span>NotebookLM RAG</span>
           </div>
-
-          <div class="features">
-            <div class="feature">
-              <span class="feature-icon">📚</span>
-              <span>RAG Context Retrieval</span>
-            </div>
-            <div class="feature">
-              <span class="feature-icon">🤖</span>
-              <span>Claude AI Integration</span>
-            </div>
-            <div class="feature">
-              <span class="feature-icon">📊</span>
-              <span>Slide Deck Format</span>
-            </div>
+          <div class="feature">
+            <span class="feature-icon">🤖</span>
+            <span>Claude AI Analysis</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">📊</span>
+            <span>PPTX Export</span>
           </div>
         </div>
-      }
+      </div>
+    }
 
-      <!-- Chat Messages -->
-      @if (messages().length > 0) {
-        <div class="messages-container">
-          @for (message of messages(); track $index) {
-            <div class="message" [class.user-message]="message.role === 'user'" [class.assistant-message]="message.role === 'assistant'">
-              <div class="message-header">
-                <span class="message-role">{{ message.role === 'user' ? '👤 You' : '🤖 AI Assistant' }}</span>
-                <span class="message-time">{{ message.timestamp | date:'short' }}</span>
-              </div>
-              <div class="message-content">
-                @if (message.role === 'user') {
-                  <p>{{ message.content }}</p>
-                } @else {
-                  <div class="markdown-content" [innerHTML]="parseMarkdown(message.content)"></div>
-                }
-              </div>
-            </div>
-          }
-
-          <!-- Loading Indicator -->
-          @if (isLoading()) {
-            <div class="message assistant-message loading-message">
-              <div class="message-header">
-                <span class="message-role">🤖 AI Assistant</span>
-              </div>
-              <div class="message-content">
-                <div class="loading-indicator">
-                  <div class="spinner"></div>
-                  <span>Generating proposal...</span>
+    <!-- Content Display -->
+    @if (selectedMode() && !showWelcomeScreen) {
+      <div class="chat-container card">
+        <!-- Messages -->
+        @if (messages().length > 0) {
+          <div class="messages-container">
+            @for (message of messages(); track $index) {
+              <div class="message" [class.user-message]="message.role === 'user'" [class.assistant-message]="message.role === 'assistant'">
+                <div class="message-header">
+                  <span class="message-role">{{ message.role === 'user' ? '👤 You' : '🤖 AI Agent' }}</span>
+                  <span class="message-time">{{ message.timestamp | date:'short' }}</span>
+                </div>
+                <div class="message-content">
+                  @if (message.role === 'user') {
+                    <p>{{ message.content }}</p>
+                  } @else {
+                    <div class="markdown-content" [innerHTML]="parseMarkdown(message.content)"></div>
+                  }
                 </div>
               </div>
+            }
+          </div>
+
+          <!-- Context Info -->
+          @if (contextInfo()) {
+            <div class="context-info">
+              <span class="context-icon">📚</span>
+              {{ contextInfo() }}
             </div>
           }
-        </div>
 
-        <!-- Context Info -->
-        @if (contextInfo()) {
-          <div class="context-info">
-            <span class="context-icon">📚</span>
-            {{ contextInfo() }}
+          <!-- Action Buttons -->
+          <div class="action-buttons">
+            <button class="btn btn-secondary" (click)="goBack()">
+              ← Back to Options
+            </button>
+            @if (selectedMode() !== 'qa') {
+              <button class="btn btn-secondary" (click)="regenerate()" [disabled]="isLoading()">
+                🔄 Regenerate
+              </button>
+            } @else {
+              <button class="btn btn-secondary" (click)="clearChat()">
+                🗑️ Clear Chat
+              </button>
+            }
+            <button class="btn btn-secondary" (click)="downloadMarkdown()" [disabled]="!hasAssistantMessages">
+              📥 Download MD
+            </button>
+            <button class="btn btn-primary" (click)="downloadPPTX()" [disabled]="!hasAssistantMessages || isLoading()">
+              📊 Download PPTX
+            </button>
           </div>
         }
 
-        <!-- Action Buttons -->
-        <div class="action-buttons">
-          <button class="btn btn-secondary" (click)="clearChat()">
-            🗑️ Clear Chat
-          </button>
-          <button class="btn btn-secondary" (click)="downloadProposal()" [disabled]="!hasAssistantMessages">
-            📥 Download Markdown
-          </button>
-          <button class="btn btn-primary" (click)="downloadPPTX()" [disabled]="!hasAssistantMessages || isLoading()">
-            📊 Download as PPTX
-          </button>
+        <!-- Loading -->
+        @if (isLoading()) {
+          <div class="message assistant-message loading-message">
+            <div class="message-header">
+              <span class="message-role">🤖 AI Agent</span>
+            </div>
+            <div class="message-content">
+              <div class="loading-indicator">
+                <div class="spinner"></div>
+                <span>Analyzing legacy systems...</span>
+              </div>
+            </div>
+          </div>
+        }
+
+        <!-- Error Message -->
+        @if (error()) {
+          <div class="error-message">
+            <span class="error-icon">⚠️</span>
+            <span>{{ error() }}</span>
+          </div>
+        }
+      </div>
+
+      <!-- QA Input (only for QA mode) -->
+      @if (showQAMode) {
+        <div class="input-container card">
+          <div class="input-wrapper">
+            <textarea
+              class="input-field"
+              [(ngModel)]="userInputValue"
+              placeholder="Ask about Polaris or Meridian systems (e.g., 'What integrations does Meridian support?')..."
+              rows="3"
+              (keydown.enter)="handleKeyDown($event)"
+              [disabled]="isLoading()"
+            ></textarea>
+            <button
+              class="btn btn-primary send-btn"
+              (click)="askQuestion()"
+              [disabled]="!userInput().trim() || isLoading()"
+            >
+              @if (isLoading()) {
+                <div class="spinner"></div>
+              } @else {
+                <span>Ask</span>
+                <span>🚀</span>
+              }
+            </button>
+          </div>
+          <div class="input-hint">
+            Press <kbd>Enter</kbd> to send • <kbd>Shift + Enter</kbd> for new line
+          </div>
         </div>
       }
-
-      <!-- Error Message -->
-      @if (error()) {
-        <div class="error-message">
-          <span class="error-icon">⚠️</span>
-          <span>{{ error() }}</span>
-        </div>
-      }
-    </div>
-
-    <!-- Input Area -->
-    <div class="input-container card">
-      <div class="input-wrapper">
-        <textarea
-          class="input-field"
-          [(ngModel)]="userInputValue"
-          placeholder="Describe your proposal requirements (e.g., 'Build an e-commerce platform with React and AWS')..."
-          rows="3"
-          (keydown.enter)="handleKeyDown($event)"
-          [disabled]="isLoading()"
-        ></textarea>
-        <button
-          class="btn btn-primary send-btn"
-          (click)="sendMessage()"
-          [disabled]="!userInput().trim() || isLoading()"
-        >
-          @if (isLoading()) {
-            <div class="spinner"></div>
-          } @else {
-            <span>Send</span>
-            <span>🚀</span>
-          }
-        </button>
-      </div>
-      <div class="input-hint">
-        Press <kbd>Enter</kbd> to send • <kbd>Shift + Enter</kbd> for new line
-      </div>
-    </div>
+    }
   </main>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>Powered by Claude AI • RAG Technology • MCP Protocol</p>
+      <p>Powered by Claude AI • NotebookLM RAG • Legacy System Modernization</p>
     </div>
   </footer>
 </div>
