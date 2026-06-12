@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { claudeService } from '../services/claude.service.js';
 import { mcpClient } from '../services/mcp-client.service.js';
+import { pptxService } from '../services/pptx.service.js';
 
 const router = Router();
 
@@ -140,6 +141,45 @@ router.post('/context', async (req: Request, res: Response) => {
     res.status(500).json({
       success: false,
       error: error.message || 'Failed to retrieve context',
+    });
+  }
+});
+
+// Download proposal as PPTX
+router.post('/download', async (req: Request, res: Response) => {
+  const { proposal } = req.body;
+
+  if (!proposal) {
+    return res.status(400).json({
+      success: false,
+      error: 'Proposal content is required',
+    });
+  }
+
+  try {
+    console.log('📊 Generating PPTX file...');
+    
+    // Step 1: Optimize content for slides using Claude
+    const optimizedContent = await pptxService.optimizeForSlides(proposal);
+    
+    // Step 2: Generate PPTX from optimized content
+    const buffer = await pptxService.generatePPTX(optimizedContent);
+    const filename = pptxService.generateFilename('proposal');
+
+    console.log('✅ PPTX generated:', filename);
+
+    // Set headers for file download
+    res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.presentationml.presentation');
+    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+    res.setHeader('Content-Length', buffer.length.toString());
+
+    // Send file
+    res.send(buffer);
+  } catch (error: any) {
+    console.error('❌ Error generating PPTX:', error.message);
+    res.status(500).json({
+      success: false,
+      error: error.message || 'Failed to generate PPTX',
     });
   }
 });

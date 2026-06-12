@@ -126,4 +126,30 @@ export class AppComponent {
     a.click();
     URL.revokeObjectURL(url);
   }
+
+  async downloadPPTX(): Promise<void> {
+    const lastMessage = this.messages().filter(m => m.role === 'assistant').pop();
+    if (!lastMessage) return;
+
+    this.isLoading.set(true);
+    this.error.set(null);
+
+    try {
+      const blob = await this.apiService.downloadProposalPPTX(lastMessage.content).toPromise();
+      
+      if (blob) {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `proposal-${Date.now()}.pptx`;
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+    } catch (err: any) {
+      console.error('Error downloading PPTX:', err);
+      this.error.set(err.message || 'Failed to download PPTX');
+    } finally {
+      this.isLoading.set(false);
+    }
+  }
 }

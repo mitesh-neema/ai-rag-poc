@@ -19,6 +19,14 @@ export class ApiService {
     );
   }
 
+  downloadProposalPPTX(proposal: string): Observable<Blob> {
+    return this.http.post(
+      `${this.apiUrl}/api/proposal/download`,
+      { proposal },
+      { responseType: 'blob' }
+    );
+  }
+
   checkHealth(): Observable<{ status: string }> {
     return this.http.get<{ status: string }>(`${this.apiUrl}/health`);
   }

@@ -99,7 +99,10 @@
             🗑️ Clear Chat
           </button>
           <button class="btn btn-secondary" (click)="downloadProposal()" [disabled]="!hasAssistantMessages">
-            📥 Download Proposal
+            📥 Download Markdown
+          </button>
+          <button class="btn btn-primary" (click)="downloadPPTX()" [disabled]="!hasAssistantMessages || isLoading()">
+            📊 Download as PPTX
           </button>
         </div>
       }

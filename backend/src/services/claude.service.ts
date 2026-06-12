@@ -58,7 +58,7 @@ export class ClaudeService {
 
     try {
       const stream = await this.anthropic.messages.stream({
-        model: 'claude-3-5-sonnet-20240620',
+        model: 'claude-sonnet-4-5-20250929',
         max_tokens: 8000,
         temperature: 0.7,
         system: systemPrompt,
@@ -128,15 +128,21 @@ Create a complete proposal with these sections as slides:
     if (caseStudies && caseStudies.length > 0) {
       prompt += `### Relevant Case Studies:\n`;
       caseStudies.forEach((cs) => {
-        prompt += `\n**${cs.title}**\n`;
-        prompt += `- Industry: ${cs.industry}\n`;
-        prompt += `- Technologies: ${cs.technologies.join(', ')}\n`;
-        prompt += `- Duration: ${cs.duration}\n`;
-        prompt += `- Team Size: ${cs.team_size}\n`;
-        prompt += `- Budget: ${cs.budget}\n`;
-        prompt += `- Summary: ${cs.summary}\n`;
-        if (cs.results) {
-          prompt += `- Key Results: ${JSON.stringify(cs.results)}\n`;
+        // Check if this is from NotebookLM (text format) or mock MCP (structured)
+        if (cs.source === 'NotebookLM' && cs.content) {
+          prompt += `\n${cs.content}\n\n`;
+        } else {
+          // Mock MCP structured format
+          prompt += `\n**${cs.title}**\n`;
+          prompt += `- Industry: ${cs.industry}\n`;
+          prompt += `- Technologies: ${cs.technologies ? cs.technologies.join(', ') : 'N/A'}\n`;
+          prompt += `- Duration: ${cs.duration}\n`;
+          prompt += `- Team Size: ${cs.team_size}\n`;
+          prompt += `- Budget: ${cs.budget}\n`;
+          prompt += `- Summary: ${cs.summary}\n`;
+          if (cs.results) {
+            prompt += `- Key Results: ${JSON.stringify(cs.results)}\n`;
+          }
         }
       });
       prompt += `\n`;
@@ -146,11 +152,17 @@ Create a complete proposal with these sections as slides:
     if (rateCards && rateCards.length > 0) {
       prompt += `### Available Team Resources & Rates:\n`;
       rateCards.forEach((rc) => {
-        prompt += `\n**${rc.role}**\n`;
-        prompt += `- Hourly Rate: $${rc.rate_per_hour}\n`;
-        prompt += `- Monthly Rate: $${rc.monthly_rate}\n`;
-        prompt += `- Skills: ${rc.skills.join(', ')}\n`;
-        prompt += `- Experience: ${rc.experience_level}\n`;
+        // Check if this is from NotebookLM (text format) or mock MCP (structured)
+        if (rc.source === 'NotebookLM' && rc.content) {
+          prompt += `\n${rc.content}\n\n`;
+        } else {
+          // Mock MCP structured format
+          prompt += `\n**${rc.role}**\n`;
+          prompt += `- Hourly Rate: $${rc.rate_per_hour}\n`;
+          prompt += `- Monthly Rate: $${rc.monthly_rate}\n`;
+          prompt += `- Skills: ${rc.skills ? rc.skills.join(', ') : 'N/A'}\n`;
+          prompt += `- Experience: ${rc.experience_level}\n`;
+        }
       });
       prompt += `\n`;
     }
@@ -159,12 +171,20 @@ Create a complete proposal with these sections as slides:
     if (techAccelerators && techAccelerators.length > 0) {
       prompt += `### Available Tech Accelerators:\n`;
       techAccelerators.forEach((ta) => {
-        prompt += `\n**${ta.name}** (${ta.category})\n`;
-        prompt += `- Description: ${ta.description}\n`;
-        prompt += `- Technologies: ${ta.technologies.join(', ')}\n`;
-        prompt += `- Time Saved: ${ta.time_saved}\n`;
-        prompt += `- Cost Reduction: ${ta.cost_reduction}\n`;
-        prompt += `- Key Features: ${ta.features.slice(0, 3).join(', ')}\n`;
+        // Check if this is from NotebookLM (text format) or mock MCP (structured)
+        if (ta.source === 'NotebookLM' && ta.content) {
+          prompt += `\n${ta.content}\n\n`;
+        } else {
+          // Mock MCP structured format
+          prompt += `\n**${ta.name}** (${ta.category})\n`;
+          prompt += `- Description: ${ta.description}\n`;
+          prompt += `- Technologies: ${ta.technologies ? ta.technologies.join(', ') : 'N/A'}\n`;
+          prompt += `- Time Saved: ${ta.time_saved}\n`;
+          prompt += `- Cost Reduction: ${ta.cost_reduction}\n`;
+          if (ta.features && ta.features.length > 0) {
+            prompt += `- Key Features: ${ta.features.slice(0, 3).join(', ')}\n`;
+          }
+        }
       });
       prompt += `\n`;
     }
