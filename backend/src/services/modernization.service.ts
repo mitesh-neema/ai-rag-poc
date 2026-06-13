@@ -24,12 +24,22 @@ export class ModernizationService {
       const meridianQuery = 'What are all the features, capabilities, and technical details of the Meridian system?';
       const meridianResult = await notebookLMMCPService.askQuestion(meridianQuery);
 
-      // Query for industry trends
-      const trendsQuery = 'What are the current industry trends and best practices for insurance policy management systems?';
+      // Query for industry trends with specific focus on tech radar and sensible defaults
+      const trendsQuery = `What are the current industry trends, Thoughtworks Tech Radar recommendations, and sensible defaults for insurance policy management systems? Include:
+- Modern technology choices (frameworks, languages, cloud platforms)
+- Industry best practices and standards
+- Proven architecture patterns
+- Security and compliance requirements
+- DevOps and deployment strategies`;
       const trendsResult = await notebookLMMCPService.askQuestion(trendsQuery);
 
-      // Query for available accelerators
-      const acceleratorsQuery = 'What technology accelerators and reusable components are available for modernization projects?';
+      // Query for available accelerators with sensible defaults
+      const acceleratorsQuery = `What technology accelerators, reusable components, and Thoughtworks sensible defaults are available for modernization projects? Include:
+- Pre-built frameworks and libraries
+- Reference architectures
+- Recommended tech stacks
+- Time-saving tools and platforms
+- Configuration best practices`;
       const acceleratorsResult = await notebookLMMCPService.askQuestion(acceleratorsQuery);
 
       console.log('✅ Legacy system context retrieved');
@@ -116,57 +126,273 @@ Format as a markdown document with clear sections and bullet points.`;
    * Generate technical solution recommendation
    */
   async generateTechSolution(context: ModernizationContext): Promise<string> {
-    console.log('⚙️ Generating technical solution...');
+    console.log('⚙️ Generating comprehensive technical solution...');
 
-    const prompt = `You are a solutions architect recommending technology for modernizing Polaris and Meridian systems.
+    const prompt = `You are a principal solutions architect creating a comprehensive technical solution for modernizing Polaris and Meridian insurance systems.
 
 CONTEXT:
 Polaris System: ${context.polarisInfo.join('\n')}
 Meridian System: ${context.meridianInfo.join('\n')}
 Available Accelerators: ${context.accelerators.join('\n')}
-Industry Trends: ${context.industryTrends.join('\n')}
+Industry Trends & Tech Radar: ${context.industryTrends.join('\n')}
 
-TASK: Provide a detailed technical solution that:
+TASK: Create an executive and technical comprehensive solution document with:
 
-1. **Recommended Tech Stack**
-   - Frontend: Framework and libraries
-   - Backend: Languages and frameworks
-   - Database: Primary and caching solutions
-   - Cloud Platform: AWS/Azure/GCP with specific services
-   - Integration: APIs, message queues, event streaming
+## 1. EXECUTIVE SUMMARY
+- Solution overview in 3-4 bullets
+- Key technology decisions with rationale
+- Expected business outcomes
 
-2. **Architecture Approach**
-   - Microservices vs Monolith
-   - Data architecture
-   - API design
-   - Security framework
-   - [DIAGRAM: High-level architecture blocks]
+## 2. SENSIBLE DEFAULTS & TECH RADAR RECOMMENDATIONS
 
-3. **Accelerators to Leverage**
-   - Which specific accelerators from our catalog to use
-   - How each accelerator speeds up development
-   - Customization required for each
-   - Time/cost savings per accelerator
+### Modern Tech Stack (Based on Tech Radar & Industry Standards)
+**Frontend:**
+- Framework: React 18+ / Angular 17+ (with reasoning)
+- State Management: Redux Toolkit / NgRx (best fit)
+- UI Library: Material-UI / Ant Design / Tailwind CSS
+- Build Tool: Vite / Webpack 5
+- **Sensible Default**: [Choose and justify based on team skills & requirements]
 
-4. **Why This Solution Works**
-   - Alignment with current system capabilities
-   - Scalability for future growth
-   - Cost-effectiveness
-   - Risk mitigation
-   - Team skill availability
+**Backend:**
+- Language & Runtime: Node.js 20 LTS / .NET 8 / Java 21 LTS
+- Framework: NestJS / Spring Boot / ASP.NET Core
+- API Style: REST + GraphQL federation
+- **Sensible Default**: [Choose with clear rationale]
 
-5. **Success Stories**
-   - Similar projects we've completed
-   - Metrics and outcomes
-   - Lessons learned applied here
+**Data Layer:**
+- Primary DB: PostgreSQL 16 / MongoDB 7
+- Caching: Redis 7 (with clustering)
+- Search: Elasticsearch 8 / OpenSearch
+- Message Queue: RabbitMQ / Apache Kafka
+- **Sensible Defaults**: [Specific choices with reasoning]
 
-6. **Implementation Strategy**
-   - Phased approach
-   - Parallel run period
-   - Data migration strategy
-   - Rollback plan
+**Cloud & Infrastructure (DevOps Sensible Defaults):**
+- Cloud: AWS / Azure / GCP (with specific reasoning)
+- Container: Docker + Kubernetes (EKS/AKS/GKE)
+- CI/CD: GitHub Actions / GitLab CI / Jenkins X
+- IaC: Terraform / Pulumi
+- Monitoring: Datadog / New Relic / Prometheus+Grafana
+- **Sensible Defaults**: [Recommended stack]
 
-Format as markdown with clear sections, technical details, and business justification.`;
+## 3. DETAILED ARCHITECTURE DIAGRAM
+
+### High-Level Architecture
+\`\`\`
+[TEXT DIAGRAM showing]:
+- Presentation Layer (Web, Mobile)
+- API Gateway
+- Microservices (Policy, Claims, Customer, etc.)
+- Data Layer
+- Integration Layer
+- Security Layer
+\`\`\`
+
+### Component Architecture
+- List each microservice with responsibility
+- Data flow between components
+- Communication patterns (sync/async)
+- [DIAGRAM: Component interactions]
+
+### Data Architecture
+- Database per service pattern
+- Event sourcing where applicable
+- CQRS for read-heavy operations
+- Data replication strategy
+- [DIAGRAM: Data flow and storage]
+
+## 4. DEPLOYMENT ARCHITECTURE
+
+### Infrastructure Design
+\`\`\`
+[TEXT DIAGRAM showing]:
+- Multiple Availability Zones
+- Load Balancers
+- Auto-scaling groups
+- Database clusters (primary/replica)
+- Cache layers
+- CDN
+- Security zones
+\`\`\`
+
+### Deployment Strategy
+- Blue-Green deployment
+- Canary releases
+- Feature flags
+- Database migration approach
+- Zero-downtime strategy
+
+### Environment Structure
+- Dev → QA → Staging → Production
+- Environment parity
+- Configuration management
+- Secrets management (AWS Secrets Manager / Vault)
+
+## 5. TECHNOLOGY ACCELERATORS & SENSIBLE DEFAULTS
+
+### Accelerators to Use
+1. **[Accelerator Name]**
+   - Purpose: [What it does]
+   - Customization: [What needs tailoring]
+   - Time Saved: [Specific estimate]
+   - Integration Complexity: Low/Medium/High
+
+2. **[Repeat for each accelerator]**
+
+### Sensible Default Configurations
+- Authentication: OAuth 2.0 + OIDC (Auth0 / Okta)
+- API Rate Limiting: 1000 req/min per user
+- Cache TTL: 5 minutes (customizable per endpoint)
+- Session timeout: 30 minutes
+- Max file upload: 50MB
+- Database connection pool: 20-50 connections
+
+## 6. TESTING STRATEGY & QUALITY CONTROL
+
+### Testing Pyramid
+**Unit Tests (70%)**
+- Coverage Target: 85% minimum
+- Tools: Jest / xUnit / JUnit
+- Automated in CI/CD
+
+**Integration Tests (20%)**
+- API contract testing
+- Database integration tests
+- Message queue integration
+- Tools: Postman / REST Assured / Pact
+
+**E2E Tests (10%)**
+- Critical user journeys
+- Tools: Cypress / Playwright / Selenium
+- Run on every deployment
+
+### Quality Metrics & Objectives
+**Code Quality:**
+- Code Coverage: ≥85%
+- Cyclomatic Complexity: ≤10 per function
+- Technical Debt Ratio: <5%
+- Code Duplication: <3%
+- Tools: SonarQube / CodeClimate
+
+**Performance Metrics:**
+- API Response Time: p95 <200ms
+- Page Load Time: <2 seconds
+- Database Query Time: p99 <100ms
+- Error Rate: <0.1%
+
+**Reliability Metrics:**
+- Uptime SLA: 99.9% (43.2 min downtime/month)
+- MTTR (Mean Time To Recovery): <15 minutes
+- MTBF (Mean Time Between Failures): >720 hours
+
+**Security Metrics:**
+- Security Scan Coverage: 100%
+- Critical Vulnerabilities: 0 tolerance
+- Dependency Updates: Weekly scan
+- Penetration Testing: Quarterly
+
+### Continuous Quality Practices
+- Pre-commit hooks (Husky)
+- Automated code review (CodeRabbit)
+- Static analysis on every PR
+- Performance testing in CI/CD
+- Security scanning (Snyk / Trivy)
+
+## 7. CROSS-FUNCTIONAL REQUIREMENTS (NFRs)
+
+### Performance
+- Concurrent Users: Support 10,000+
+- Response Time: 95th percentile <200ms
+- Throughput: 1000 TPS
+- Batch Processing: Handle 1M records/hour
+
+### Scalability
+- Horizontal scaling: Auto-scale based on CPU/Memory
+- Database: Read replicas + sharding strategy
+- Cache: Distributed Redis cluster
+- CDN: CloudFront / Cloudflare for static assets
+
+### Security
+- Authentication: Multi-factor authentication (MFA)
+- Authorization: Role-based access control (RBAC)
+- Data Encryption: At rest (AES-256) & in transit (TLS 1.3)
+- Audit Logging: All actions logged
+- Compliance: SOC 2, GDPR, HIPAA ready
+- Penetration Testing: Annual + after major releases
+
+### Reliability & Resilience
+- Disaster Recovery: RPO <1 hour, RTO <4 hours
+- Backup Strategy: Daily full + hourly incremental
+- Circuit Breakers: Hystrix / Resilience4j
+- Retry Logic: Exponential backoff
+- Health Checks: Kubernetes liveness/readiness probes
+
+### Observability
+- Logging: Structured JSON logs → ELK/Splunk
+- Metrics: Prometheus + Grafana dashboards
+- Tracing: Distributed tracing with Jaeger/Zipkin
+- Alerting: PagerDuty integration
+- SLIs/SLOs: Define and track
+
+### Compliance & Governance
+- Data Residency: Region-specific storage
+- Data Retention: 7-year policy archive
+- Access Controls: Principle of least privilege
+- Change Management: ITSM integration
+- Audit Trail: Immutable logs
+
+## 8. MIGRATION & IMPLEMENTATION STRATEGY
+
+### Migration Approach
+1. **Strangler Fig Pattern**
+   - Incrementally replace legacy features
+   - Maintain both systems in parallel
+   - Route traffic based on feature readiness
+
+2. **Data Migration**
+   - ETL pipeline design
+   - Data validation & reconciliation
+   - Rollback strategy
+
+3. **Cutover Plan**
+   - Feature-by-feature migration
+   - User cohort approach
+   - Rollback criteria
+
+## 9. WHY THIS SOLUTION WORKS
+
+### Technical Alignment
+- Matches current team skills (list technologies)
+- Proven at scale (reference similar projects)
+- Modern but stable technology choices
+- Strong community & vendor support
+
+### Business Alignment
+- Faster time-to-market: 40% reduction
+- Lower TCO: 30% cost savings over 3 years
+- Improved reliability: 99.9% vs current 99.5%
+- Better developer experience: 2x productivity
+
+### Risk Mitigation
+- Gradual migration reduces risk
+- Proven technology stack
+- Strong DevOps practices
+- Comprehensive testing strategy
+
+## 10. SUCCESS METRICS
+
+### Technical KPIs (6-month targets)
+- Deployment Frequency: 10+ per day
+- Lead Time: <1 hour
+- MTTR: <15 minutes
+- Change Failure Rate: <5%
+
+### Business KPIs
+- Policy Processing Time: 50% faster
+- Customer Satisfaction: +20 NPS points
+- Operational Cost: -30%
+- Revenue Impact: +$XM annually
+
+Format this as a detailed, executive-ready markdown document with clear sections, technical depth, and business justification.`;
 
     const response = await this.callClaude(prompt);
     console.log('✅ Technical solution generated');

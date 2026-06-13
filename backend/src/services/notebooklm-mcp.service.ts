@@ -269,9 +269,14 @@ export class NotebookLMMCPService {
       console.log('💰 Asking for rate cards...');
       const rateCardsResult = await this.askQuestion(rateCardsQuery);
 
-      // Ask for tech accelerators
-      const techAcceleratorsQuery = `What technology accelerators, frameworks, or reusable components are available for "${requirements}"? Include time savings and features.`;
-      console.log('⚡ Asking for tech accelerators...');
+      // Ask for tech accelerators with Thoughtworks sensible defaults and tech radar
+      const techAcceleratorsQuery = `What technology accelerators, frameworks, reusable components, Thoughtworks sensible defaults, and Tech Radar recommendations are available for "${requirements}"? Include:
+- Pre-built accelerators and their time savings
+- Thoughtworks recommended technology choices
+- Tech Radar adopt/trial technologies
+- Industry-standard frameworks and libraries
+- Sensible default configurations and best practices`;
+      console.log('⚡ Asking for tech accelerators and sensible defaults...');
       const techAcceleratorsResult = await this.askQuestion(techAcceleratorsQuery);
 
       console.log('✅ NotebookLM context retrieved successfully');
